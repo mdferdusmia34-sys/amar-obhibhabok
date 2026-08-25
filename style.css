@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #ffe6f2, #e6f3ff);
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+button {
+    padding: 14px 25px;
+    margin: 8px;
+    border: none;
+    border-radius: 15px;
+    font-size: 17px;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+.welcome-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 45px;
+    border-radius: 30px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.welcome-card h1 {
+    margin-bottom: 10px;
+}
+
+.welcome-card h2 {
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.welcome-card p {
+    line-height: 1.7;
+}
+
+.welcome-card button {
+    background: #ffffff;
+    padding: 15px 35px;
+    font-weight: bold;
+}
+.parent-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 30px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.parent-card h1 {
+    margin-bottom: 15px;
+}
+
+.parent-card p {
+    margin-bottom: 30px;
+}
+
+.parent-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.parent-buttons button {
+    min-width: 170px;
+    min-height: 120px;
+    font-size: 18px;
+    line-height: 1.8;
+}
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 30px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card h1 {
+    margin-bottom: 10px;
+}
+
+.dashboard-card h2 {
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.dashboard-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.dashboard-buttons button {
+    min-height: 100px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dashboard-buttons button:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 600px) {
+    .dashboard-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+.task-list {
+    margin: 25px 0;
+    text-align: left;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 18px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    font-size: 18px;
+}
+
+.task input {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.task input:checked + span {
+    text-decoration: line-through;
+    opacity: 0.5;
+}

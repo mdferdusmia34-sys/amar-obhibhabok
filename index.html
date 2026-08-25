@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amar Obhibhabok</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="welcome-card">
+
+    <div class="logo">🌸</div>
+
+    <h1>Amar Obhibhabok</h1>
+
+    <h2>তোমার Virtual Parent</h2>
+
+    <p>
+        SSC প্রস্তুতির পুরো যাত্রায়
+        তোমার পাশে থাকার জন্য আমরা আছি।
+    </p>
+
+    <button onclick="startWebsite()">
+        শুরু করি 🚀
+    </button>
+
+</div>
+
+
+<script>
+
+/* =========================
+   START
+========================= */
+
+function startWebsite() {
+
+    alert("স্বাগতম! 🌸 এবার তোমার Virtual Parent বেছে নাও।");
+
+    document.body.innerHTML = `
+
+        <div class="parent-card">
+
+            <div class="logo">👨‍👩‍👧</div>
+
+            <h1>তোমার Virtual Parent বেছে নাও</h1>
+
+            <p>
+                যে অভিভাবক তোমার পাশে থাকবে
+                তাকে বেছে নাও 🌸
+            </p>
+
+            <div class="parent-buttons">
+
+                <button onclick="chooseMom()">
+                    👩<br>Virtual Mom
+                </button>
+
+                <button onclick="chooseDad()">
+                    👨<br>Virtual Dad
+                </button>
+
+                <button onclick="chooseGuardian()">
+                    🧑<br>Friendly Guardian
+                </button>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* =========================
+   PARENTS
+========================= */
+
+function chooseMom() {
+
+    localStorage.setItem("parentIcon", "👩");
+    localStorage.setItem("parentName", "Virtual Mom");
+
+    showDashboard("👩", "Virtual Mom");
+}
+
+
+function chooseDad() {
+
+    localStorage.setItem("parentIcon", "👨");
+    localStorage.setItem("parentName", "Virtual Dad");
+
+    showDashboard("👨", "Virtual Dad");
+}
+
+
+function chooseGuardian() {
+
+    localStorage.setItem("parentIcon", "🧑");
+    localStorage.setItem("parentName", "Friendly Guardian");
+
+    showDashboard("🧑", "Friendly Guardian");
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function showDashboard(icon, parentName) {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">${icon}</div>
+
+            <h1>স্বাগতম! 🌸</h1>
+
+            <h2>${parentName} তোমার সাথে আছে</h2>
+
+            <p>
+                আজকের পড়াশোনার যাত্রা শুরু করি। 📚
+            </p>
+
+            <div class="dashboard-buttons">
+
+                <button onclick="showAI()">
+                    🤖 Amar Obhibhabok AI
+                </button>
+
+                <button onclick="showStudyPlanner()">
+                    📚 Study Planner
+                </button>
+
+                <button onclick="showWeeklyPlanner()">
+                    📅 Weekly Study Planner
+                </button>
+
+                <button onclick="showChapterManager()">
+                    📖 Chapter Manager
+                </button>
+
+                <button onclick="showNotes()">
+                    📒 Study Notes
+                </button>
+
+                <button onclick="showTasks()">
+                    📝 Today's Task
+                </button>
+
+                <button onclick="showProgress()">
+                    📊 আমার Progress
+                </button>
+
+                <button onclick="showDailyGoal()">
+                    🎯 আজকের Goal
+                </button>
+
+                <button onclick="showMotivation()">
+                    💖 আজকের Motivation
+                </button>
+
+                <button onclick="showParentMessage()">
+                    💬 আমাকে বলো
+                </button>
+
+                <button onclick="showTimer()">
+                    ⏱️ Focus Study Timer
+                </button>
+
+                <button onclick="showCountdown()">
+                    ⏰ SSC Countdown
+                </button>
+
+                <button onclick="showQuickResources()">
+                    📚 Quick Study Resources
+                </button>
+
+                <button onclick="resetWebsiteData()">
+                    🗑️ Reset Website Data
+                </button>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* =========================
+   AI
+========================= */
+
+function showAI() {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card ai-card">
+
+            <div class="logo">🤖</div>
+
+            <h1>Amar Obhibhabok AI</h1>
+
+            <p>
+                প্রশ্ন লিখো অথবা প্রশ্নের ছবি পাঠাও। 📚🖼️
+            </p>
+
+            <div class="ai-box">
+
+                <div id="chatBox">
+
+                    <div class="ai-message">
+
+                        🤖 <b>AI:</b>
+
+                        <br><br>
+
+                        হ্যালো! 🌸 আমি তোমার Study Assistant।
+
+                        <br><br>
+
+                        Math, Science, English,
+                        বাংলা অথবা ছবির প্রশ্ন পাঠাতে পারো।
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <textarea
+                id="aiInput"
+                rows="4"
+                placeholder="তোমার প্রশ্ন এখানে লিখো..."
+            ></textarea>
+
+            <br><br>
+
+            <label>
+                🖼️ প্রশ্নের ছবি নির্বাচন করো:
+            </label>
+
+            <br><br>
+
+            <input
+                type="file"
+                id="aiImage"
+                accept="image/*"
+                onchange="previewAIImage()"
+            >
+
+            <br><br>
+
+            <img
+                id="imagePreview"
+                style="
+                    max-width:100%;
+                    max-height:300px;
+                    display:none;
+                    border-radius:12px;
+                "
+            >
+
+            <br><br>
+
+            <button onclick="sendAIQuestion()">
+                🚀 প্রশ্ন পাঠাও
+            </button>
+
+            <button onclick="clearAIChat()">
+                🗑️ Chat Clear
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+function previewAIImage() {
+
+    const file =
+        document.getElementById("aiImage").files[0];
+
+    const preview =
+        document.getElementById("imagePreview");
+
+    if (!file) {
+
+        preview.style.display = "none";
+
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+
+        preview.src = event.target.result;
+
+        preview.style.display = "block";
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+async function sendAIQuestion() {
+
+    const input =
+        document.getElementById("aiInput");
+
+    const imageInput =
+        document.getElementById("aiImage");
+
+    const question =
+        input.value.trim();
+
+    const file =
+        imageInput.files[0];
+
+    if (!question && !file) {
+
+        alert(
+            "প্রশ্ন লিখো অথবা একটি ছবি নির্বাচন করো 😊"
+        );
+
+        return;
+    }
+
+    const chat =
+        document.getElementById("chatBox");
+
+    const user =
+        document.createElement("div");
+
+    user.className = "user-message";
+
+    user.innerHTML =
+        "👤 <b>তুমি:</b><br>" +
+        (
+            question
+                ? escapeHTML(question)
+                : "🖼️ একটি প্রশ্নের ছবি পাঠিয়েছে।"
+        );
+
+    chat.appendChild(user);
+
+    input.value = "";
+
+    const loading =
+        document.createElement("div");
+
+    loading.className = "ai-message";
+
+    loading.innerHTML =
+        "🤖 <b>AI:</b><br><br>ভাবছি... 🧠";
+
+    chat.appendChild(loading);
+
+    try {
+
+        let imageData = "";
+
+        if (file) {
+
+            imageData =
+                await new Promise(
+                    function(resolve, reject) {
+
+                        const reader =
+                            new FileReader();
+
+                        reader.onload =
+                            function() {
+
+                                resolve(
+                                    reader.result
+                                );
+
+                            };
+
+                        reader.onerror =
+                            function() {
+
+                                reject(
+                                    new Error(
+                                        "Image read failed"
+                                    )
+                                );
+
+                            };
+
+                        reader.readAsDataURL(file);
+                    }
+                );
+        }
+
+        const response =
+            await fetch(
+                "/api/ask",
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        question:
+                            question,
+
+                        image:
+                            imageData
+
+                    })
+
+                }
+            );
+
+        const data =
+            await response.json();
+
+        loading.innerHTML =
+            "🤖 <b>AI:</b><br><br>" +
+            escapeHTML(
+                data.answer ||
+                data.error ||
+                "উত্তর পাওয়া যায়নি।"
+            );
+
+    } catch (error) {
+
+        console.error(error);
+
+        loading.innerHTML =
+            "🤖 <b>AI:</b><br><br>" +
+            "❌ AI-এর সাথে connection হচ্ছে না।";
+    }
+
+    chat.scrollTop =
+        chat.scrollHeight;
+}
+
+
+function clearAIChat() {
+
+    const chat =
+        document.getElementById("chatBox");
+
+    chat.innerHTML = `
+
+        <div class="ai-message">
+
+            🤖 <b>AI:</b>
+
+            <br><br>
+
+            Chat পরিষ্কার হয়েছে। 🌸
+
+            <br><br>
+
+            নতুন প্রশ্ন করো।
+
+        </div>
+    `;
+}
+
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+/* =========================
+   STUDY PLANNER
+========================= */
+
+function showStudyPlanner() {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📚</div>
+
+            <h1>Study Planner</h1>
+
+            <p>
+                আজকের পড়াশোনার পরিকল্পনা।
+            </p>
+
+            <div class="task-list">
+
+                <div class="task">
+                    📖 বাংলা — ১ ঘণ্টা
+                </div>
+
+                <div class="task">
+                    📘 English — ১ ঘণ্টা
+                </div>
+
+                <div class="task">
+                    ➗ গণিত — ২ ঘণ্টা
+                </div>
+
+                <div class="task">
+                    🔬 বিজ্ঞান — ১ ঘণ্টা
+                </div>
+
+            </div>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+/* =========================
+   WEEKLY PLANNER
+========================= */
+
+function showWeeklyPlanner() {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📅</div>
+
+            <h1>Weekly Study Planner</h1>
+
+            <div class="add-task">
+
+                <input
+                    id="weeklyTask"
+                    type="text"
+                    placeholder="পড়ার কাজ লিখো..."
+                >
+
+                <select id="weeklyDay">
+
+                    <option>শনিবার</option>
+                    <option>রবিবার</option>
+                    <option>সোমবার</option>
+                    <option>মঙ্গলবার</option>
+                    <option>বুধবার</option>
+                    <option>বৃহস্পতিবার</option>
+                    <option>শুক্রবার</option>
+
+                </select>
+
+                <button onclick="addWeeklyTask()">
+                    ➕ যোগ
+                </button>
+
+            </div>
+
+            <div
+                id="weeklyTaskList"
+                class="task-list"
+            ></div>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+
+    renderWeeklyTasks();
+}
+
+
+function addWeeklyTask() {
+
+    const text =
+        document
+        .getElementById("weeklyTask")
+        .value.trim();
+
+    const day =
+        document
+        .getElementById("weeklyDay")
+        .value;
+
+    if (!text) {
+
+        alert("আগে একটি Task লিখো 😊");
+
+        return;
+    }
+
+    let tasks =
+        JSON.parse(
+            localStorage.getItem("weeklyTasks")
+        ) || [];
+
+    tasks.push({
+
+        text: text,
+
+        day: day,
+
+        completed: false
+
+    });
+
+    localStorage.setItem(
+        "weeklyTasks",
+        JSON.stringify(tasks)
+    );
+
+    document.getElementById(
+        "weeklyTask"
+    ).value = "";
+
+    renderWeeklyTasks();
+}
+
+
+function renderWeeklyTasks() {
+
+    const list =
+        document.getElementById(
+            "weeklyTaskList"
+        );
+
+    if (!list) return;
+
+    const tasks =
+        JSON.parse(
+            localStorage.getItem("weeklyTasks")
+        ) || [];
+
+    list.innerHTML = "";
+
+    tasks.forEach(
+        function(task, index) {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "task";
+
+            div.innerHTML = `
+
+                <input
+                    type="checkbox"
+                    ${task.completed ? "checked" : ""}
+                    onchange="toggleWeeklyTask(${index})"
+                >
+
+                <span>
+                    📅 ${escapeHTML(task.day)}
+                    — ${escapeHTML(task.text)}
+                </span>
+            `;
+
+            list.appendChild(div);
+        }
+    );
+}
+
+
+function toggleWeeklyTask(index) {
+
+    let tasks =
+        JSON.parse(
+            localStorage.getItem("weeklyTasks")
+        ) || [];
+
+    tasks[index].completed =
+        !tasks[index].completed;
+
+    localStorage.setItem(
+        "weeklyTasks",
+        JSON.stringify(tasks)
+    );
+
+    renderWeeklyTasks();
+}
+
+
+/* =========================
+   CHAPTER MANAGER
+========================= */
+
+function showChapterManager() {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📖</div>
+
+            <h1>Chapter Manager</h1>
+
+            <button onclick="showChapters('বাংলা')">
+                📖 বাংলা
+            </button>
+
+            <button onclick="showChapters('English')">
+                📘 English
+            </button>
+
+            <button onclick="showChapters('গণিত')">
+                ➗ গণিত
+            </button>
+
+            <button onclick="showChapters('বিজ্ঞান')">
+                🔬 বিজ্ঞান
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+function showChapters(subject) {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📖</div>
+
+            <h1>${escapeHTML(subject)}</h1>
+
+            <h3 id="chapterProgress">
+                Progress: 0 / 0
+            </h3>
+
+            <div class="add-task">
+
+                <input
+                    id="chapterInput"
+                    type="text"
+                    placeholder="নতুন Chapter..."
+                >
+
+                <button onclick="addChapter('${subject}')">
+                    ➕ যোগ
+                </button>
+
+            </div>
+
+            <div
+                id="chapterList"
+                class="task-list"
+            ></div>
+
+            <button onclick="showChapterManager()">
+                📚 Subjects
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+
+    renderChapters(subject);
+}
+
+
+function addChapter(subject) {
+
+    const input =
+        document.getElementById(
+            "chapterInput"
+        );
+
+    const text =
+        input.value.trim();
+
+    if (!text) {
+
+        alert("Chapter লিখো 😊");
+
+        return;
+    }
+
+    const key =
+        "chapters_" + subject;
+
+    let chapters =
+        JSON.parse(
+            localStorage.getItem(key)
+        ) || [];
+
+    chapters.push({
+
+        text: text,
+
+        completed: false
+
+    });
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(chapters)
+    );
+
+    input.value = "";
+
+    renderChapters(subject);
+}
+
+
+function renderChapters(subject) {
+
+    const key =
+        "chapters_" + subject;
+
+    const chapters =
+        JSON.parse(
+            localStorage.getItem(key)
+        ) || [];
+
+    const list =
+        document.getElementById(
+            "chapterList"
+        );
+
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    let completed = 0;
+
+    chapters.forEach(
+        function(chapter, index) {
+
+            if (chapter.completed)
+                completed++;
+
+            const div =
+                document.createElement("div");
+
+            div.className = "task";
+
+            div.innerHTML = `
+
+                <input
+                    type="checkbox"
+                    ${chapter.completed ? "checked" : ""}
+                    onchange="toggleChapter('${subject}', ${index})"
+                >
+
+                <span>
+                    ${escapeHTML(chapter.text)}
+                </span>
+            `;
+
+            list.appendChild(div);
+        }
+    );
+
+    document.getElementById(
+        "chapterProgress"
+    ).innerText =
+        "📊 Progress: " +
+        completed +
+        " / " +
+        chapters.length;
+}
+
+
+function toggleChapter(subject, index) {
+
+    const key =
+        "chapters_" + subject;
+
+    let chapters =
+        JSON.parse(
+            localStorage.getItem(key)
+        ) || [];
+
+    chapters[index].completed =
+        !chapters[index].completed;
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(chapters)
+    );
+
+    renderChapters(subject);
+}
+
+
+/* =========================
+   NOTES
+========================= */
+
+function showNotes() {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📒</div>
+
+            <h1>Study Notes</h1>
+
+            <textarea
+                id="notesBox"
+                rows="10"
+                placeholder="এখানে Notes লিখো..."
+            ></textarea>
+
+            <button onclick="saveNotes()">
+                💾 Save Notes
+            </button>
+
+            <button onclick="clearNotes()">
+                🗑️ Clear Notes
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+
+    document.getElementById(
+        "notesBox"
+    ).value =
+        localStorage.getItem(
+            "studyNotes"
+        ) || "";
+}
+
+
+function saveNotes() {
+
+    localStorage.setItem(
+        "studyNotes",
+        document.getElementById(
+            "notesBox"
+        ).value
+    );
+
+    alert("✅ Notes save হয়েছে!");
+}
+
+
+function clearNotes() {
+
+    localStorage.removeItem(
+        "studyNotes"
+    );
+
+    document.getElementById(
+        "notesBox"
+    ).value = "";
+
+    alert("🗑️ Notes মুছে দেওয়া হয়েছে!");
+}
+
+
+/* =========================
+   TODAY TASK
+========================= */
+
+function showTasks() {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📝</div>
+
+            <h1>আজকের পড়াশোনা</h1>
+
+            <h3 id="progressText">
+                Progress
+            </h3>
+
+            <div class="add-task">
+
+                <input
+                    id="newTask"
+                    type="text"
+                    placeholder="নতুন Task..."
+                >
+
+                <button onclick="addTask()">
+                    ➕ যোগ
+                </button>
+
+            </div>
+
+            <div
+                id="taskList"
+                class="task-list"
+            ></div>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+
+    loadTasks();
+}
+
+
+function loadTasks() {
+
+    let tasks =
+        JSON.parse(
+            localStorage.getItem("tasks")
+        );
+
+    if (!tasks) {
+
+        tasks = [
+
+            {
+                text: "বাংলা — ১ ঘণ্টা",
+                completed: false
+            },
+
+            {
+                text: "English — ১ ঘণ্টা",
+                completed: false
+            },
+
+            {
+                text: "গণিত — ২ ঘণ্টা",
+                completed: false
+            },
+
+            {
+                text: "বিজ্ঞান — ১ ঘণ্টা",
+                completed: false
+            }
+
+        ];
+
+        localStorage.setItem(
+            "tasks",
+            JSON.stringify(tasks)
+        );
+    }
+
+    const list =
+        document.getElementById(
+            "taskList"
+        );
+
+    tasks.forEach(
+        function(task, index) {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "task";
+
+            div.innerHTML = `
+
+                <input
+                    type="checkbox"
+                    ${task.completed ? "checked" : ""}
+                    onchange="updateTask(${index})"
+                >
+
+                <span>
+                    ${escapeHTML(task.text)}
+                </span>
+            `;
+
+            list.appendChild(div);
+        }
+    );
+
+    updateProgress();
+}
+
+
+function addTask() {
+
+    const input =
+        document.getElementById(
+            "newTask"
+        );
+
+    const text =
+        input.value.trim();
+
+    if (!text) {
+
+        alert("আগে Task লিখো 😊");
+
+        return;
+    }
+
+    let tasks =
+        JSON.parse(
+            localStorage.getItem("tasks")
+        ) || [];
+
+    tasks.push({
+
+        text: text,
+
+        completed: false
+
+    });
+
+    localStorage.setItem(
+        "tasks",
+        JSON.stringify(tasks)
+    );
+
+    input.value = "";
+
+    showTasks();
+}
+
+
+function updateTask(index) {
+
+    let tasks =
+        JSON.parse(
+            localStorage.getItem("tasks")
+        ) || [];
+
+    tasks[index].completed =
+        !tasks[index].completed;
+
+    localStorage.setItem(
+        "tasks",
+        JSON.stringify(tasks)
+    );
+
+    updateProgress();
+}
+
+
+function updateProgress() {
+
+    const tasks =
+        JSON.parse(
+            localStorage.getItem("tasks")
+        ) || [];
+
+    const completed =
+        tasks.filter(
+            task => task.completed
+        ).length;
+
+    const text =
+        document.getElementById(
+            "progressText"
+        );
+
+    if (text) {
+
+        text.innerText =
+            "📊 আজকের Progress: " +
+            completed +
+            " / " +
+            tasks.length;
+    }
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function showProgress() {
+
+    const tasks =
+        JSON.parse(
+            localStorage.getItem("tasks")
+        ) || [];
+
+    const total =
+        tasks.length;
+
+    const complete =
+        tasks.filter(
+            task => task.completed
+        ).length;
+
+    const remaining =
+        total - complete;
+
+    const percentage =
+        total
+            ? Math.round(
+                complete / total * 100
+            )
+            : 0;
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📊</div>
+
+            <h1>আমার Progress</h1>
+
+            <h2>${percentage}% Complete</h2>
+
+            <h3>📚 মোট Task: ${total}</h3>
+
+            <h3>✅ Complete: ${complete}</h3>
+
+            <h3>⏳ বাকি: ${remaining}</h3>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+/* =========================
+   DAILY GOAL
+========================= */
+
+function showDailyGoal() {
+
+    const goal =
+        localStorage.getItem(
+            "dailyGoal"
+        ) || "";
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">🎯</div>
+
+            <h1>আজকের Goal</h1>
+
+            <input
+                id="goalInput"
+                value="${escapeHTML(goal)}"
+                placeholder="আজকের Goal..."
+            >
+
+            <button onclick="saveDailyGoal()">
+                💾 Save Goal
+            </button>
+
+            <h3>
+                ${
+                    goal
+                        ? "🌟 " + escapeHTML(goal)
+                        : "এখনো Goal সেট করা হয়নি।"
+                }
+            </h3>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+function saveDailyGoal() {
+
+    const goal =
+        document.getElementById(
+            "goalInput"
+        ).value.trim();
+
+    if (!goal) {
+
+        alert("Goal লিখো 😊");
+
+        return;
+    }
+
+    localStorage.setItem(
+        "dailyGoal",
+        goal
+    );
+
+    alert("🎯 Goal save হয়েছে!");
+
+    showDailyGoal();
+}
+
+
+/* =========================
+   MOTIVATION
+========================= */
+
+function showMotivation() {
+
+    const messages = [
+
+        "আজকের ছোট চেষ্টা আগামী দিনের বড় সাফল্য। 🌸",
+
+        "একটা একটা করে Task শেষ করো। তুমি পারবে! 💖",
+
+        "কঠিন লাগলেও হাল ছেড়ো না। 🌟",
+
+        "নিজের ওপর বিশ্বাস রাখো। 📚",
+
+        "আজকের সময়টাকে সুন্দরভাবে কাজে লাগাও। 🎯"
+
+    ];
+
+    const message =
+        messages[
+            Math.floor(
+                Math.random()
+                * messages.length
+            )
+        ];
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">💖</div>
+
+            <h1>আজকের Motivation</h1>
+
+            <p>${message}</p>
+
+            <button onclick="showMotivation()">
+                🔄 আরেকটি
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+/* =========================
+   PARENT MESSAGE
+========================= */
+
+function showParentMessage() {
+
+    const name =
+        localStorage.getItem(
+            "parentName"
+        ) || "Virtual Parent";
+
+    const icon =
+        localStorage.getItem(
+            "parentIcon"
+        ) || "🌸";
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">${icon}</div>
+
+            <h1>${escapeHTML(name)}</h1>
+
+            <p>
+                🌸 আজ কতটুকু পড়েছো?
+                একটু দেখে নাও।
+            </p>
+
+            <p>
+                💖 ধীরে ধীরে এগিয়ে যাও।
+                তুমি পারবে।
+            </p>
+
+            <button onclick="showParentMessage()">
+                🔄 আরেকবার বলো
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+let timerInterval;
+
+let timerSeconds = 25 * 60;
+
+
+function showTimer() {
+
+    clearInterval(timerInterval);
+
+    timerSeconds = 25 * 60;
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">⏱️</div>
+
+            <h1>Focus Study Timer</h1>
+
+            <h2 id="timerDisplay">
+                25:00
+            </h2>
+
+            <button onclick="startTimer()">
+                ▶️ Start
+            </button>
+
+            <button onclick="pauseTimer()">
+                ⏸️ Pause
+            </button>
+
+            <button onclick="resetTimer()">
+                🔄 Reset
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+function startTimer() {
+
+    clearInterval(timerInterval);
+
+    timerInterval =
+        setInterval(
+            function() {
+
+                if (timerSeconds <= 0) {
+
+                    clearInterval(
+                        timerInterval
+                    );
+
+                    alert(
+                        "🎉 Focus Session শেষ!"
+                    );
+
+                    return;
+                }
+
+                timerSeconds--;
+
+                updateTimer();
+
+            },
+            1000
+        );
+}
+
+
+function pauseTimer() {
+
+    clearInterval(
+        timerInterval
+    );
+}
+
+
+function resetTimer() {
+
+    clearInterval(
+        timerInterval
+    );
+
+    timerSeconds = 25 * 60;
+
+    updateTimer();
+}
+
+
+function updateTimer() {
+
+    const display =
+        document.getElementById(
+            "timerDisplay"
+        );
+
+    if (!display) return;
+
+    const minutes =
+        Math.floor(
+            timerSeconds / 60
+        );
+
+    const seconds =
+        timerSeconds % 60;
+
+    display.innerText =
+        String(minutes).padStart(2, "0")
+        +
+        ":"
+        +
+        String(seconds).padStart(2, "0");
+}
+
+
+/* =========================
+   SSC COUNTDOWN
+========================= */
+
+function showCountdown() {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">🎓</div>
+
+            <h1>SSC Countdown</h1>
+
+            <p>
+                📅 সম্ভাব্য পরীক্ষার তারিখ:
+                ৭ জানুয়ারি ২০২৭
+            </p>
+
+            <h2 id="countdownText">
+                Countdown চলছে...
+            </h2>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+
+    const examDate =
+        new Date(
+            "January 7, 2027 10:00:00"
+        ).getTime();
+
+    const countdown =
+        setInterval(
+            function() {
+
+                const now =
+                    new Date().getTime();
+
+                const distance =
+                    examDate - now;
+
+                if (distance <= 0) {
+
+                    clearInterval(countdown);
+
+                    const text =
+                        document.getElementById(
+                            "countdownText"
+                        );
+
+                    if (text) {
+
+                        text.innerText =
+                            "🎓 SSC পরীক্ষা শুরু হয়ে গেছে!";
+                    }
+
+                    return;
+                }
+
+                const days =
+                    Math.floor(
+                        distance /
+                        (1000 * 60 * 60 * 24)
+                    );
+
+                const hours =
+                    Math.floor(
+                        (
+                            distance %
+                            (1000 * 60 * 60 * 24)
+                        )
+                        /
+                        (1000 * 60 * 60)
+                    );
+
+                const minutes =
+                    Math.floor(
+                        (
+                            distance %
+                            (1000 * 60 * 60)
+                        )
+                        /
+                        (1000 * 60)
+                    );
+
+                const seconds =
+                    Math.floor(
+                        (
+                            distance %
+                            (1000 * 60)
+                        )
+                        /
+                        1000
+                    );
+
+                const text =
+                    document.getElementById(
+                        "countdownText"
+                    );
+
+                if (text) {
+
+                    text.innerText =
+                        days +
+                        " দিন " +
+                        hours +
+                        " ঘণ্টা " +
+                        minutes +
+                        " মিনিট " +
+                        seconds +
+                        " সেকেন্ড";
+                }
+
+            },
+            1000
+        );
+}
+
+
+/* =========================
+   QUICK STUDY RESOURCES
+========================= */
+
+function showQuickResources() {
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📚</div>
+
+            <h1>Quick Study Resources</h1>
+
+            <p>
+                দ্রুত পড়ার জন্য একটি Subject বেছে নাও। 🌸
+            </p>
+
+            <button onclick="showResource('বাংলা')">
+                📖 বাংলা
+            </button>
+
+            <button onclick="showResource('English')">
+                📘 English
+            </button>
+
+            <button onclick="showResource('গণিত')">
+                ➗ গণিত
+            </button>
+
+            <button onclick="showResource('বিজ্ঞান')">
+                🔬 বিজ্ঞান
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+function showResource(subject) {
+
+    const resources = {
+
+        "বাংলা":
+        "বাংলা পড়ার সময় প্রথমে মূল বক্তব্য বুঝে নাও। এরপর গুরুত্বপূর্ণ শব্দ, ব্যাকরণ ও প্রশ্নের উত্তর অনুশীলন করো।",
+
+        "English":
+        "English-এর জন্য Grammar, Vocabulary, Reading এবং Writing নিয়মিত practice করো।",
+
+        "গণিত":
+        "গণিতে formula বোঝার পাশাপাশি ধাপে ধাপে problem solve করো এবং ভুলগুলো আবার অনুশীলন করো।",
+
+        "বিজ্ঞান":
+        "বিজ্ঞানে শুধু মুখস্থ না করে কারণ, প্রক্রিয়া এবং উদাহরণ বুঝে পড়ো।"
+    };
+
+    document.body.innerHTML = `
+
+        <div class="dashboard-card">
+
+            <div class="logo">📚</div>
+
+            <h1>${escapeHTML(subject)}</h1>
+
+            <p>
+                ${resources[subject]}
+            </p>
+
+            <button onclick="showQuickResources()">
+                📚 অন্য Subject
+            </button>
+
+            <button onclick="goHome()">
+                🏠 Dashboard
+            </button>
+
+        </div>
+    `;
+}
+
+
+/* =========================
+   RESET WEBSITE
+========================= */
+
+function resetWebsiteData() {
+
+    const confirmReset =
+        confirm(
+            "সব Task, Notes, Goal, Chapter এবং saved data মুছে ফেলতে চাও?"
+        );
+
+    if (!confirmReset) return;
+
+    localStorage.clear();
+
+    alert(
+        "✅ Website data reset হয়েছে।"
+    );
+
+    location.reload();
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function goHome() {
+
+    const icon =
+        localStorage.getItem(
+            "parentIcon"
+        );
+
+    const name =
+        localStorage.getItem(
+            "parentName"
+        );
+
+    if (icon && name) {
+
+        showDashboard(
+            icon,
+            name
+        );
+
+    } else {
+
+        location.reload();
+    }
+}
+
+</script>
+
+</body>
+
+</html>
